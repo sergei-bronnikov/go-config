@@ -7,14 +7,20 @@ import (
 	"strconv"
 )
 
-/*
-	type Config struct {
-		Mode              string `env:"APP_MODE" default:"production"`
-		Postgres          PostgresConfig
-		AdminServerPort   int    `env:"ADMIN_SERVER_PORT" default:"8080"`
-	}
-*/
-func Load(conf *interface{}) error {
+// Load
+//
+//	type Config struct {
+//		Mode              string `env:"APP_MODE" default:"production"`
+//		Postgres          PostgresConfig
+//		AdminServerPort   int    `env:"ADMIN_SERVER_PORT" default:"8080"`
+//	}
+//
+// var conf = &Config{}
+//
+//	func a() {
+//		err := Load(conf)
+//	}
+func Load(conf interface{}) error {
 	err := prepareConfig(reflect.ValueOf(conf).Elem())
 	if err != nil {
 		return err

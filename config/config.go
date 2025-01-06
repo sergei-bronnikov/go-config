@@ -21,6 +21,9 @@ import (
 //		err := Load(conf)
 //	}
 func Load(conf interface{}) error {
+	if conf == nil {
+		return errors.New("config is nil")
+	}
 	err := prepareConfig(reflect.ValueOf(conf).Elem())
 	if err != nil {
 		return err
